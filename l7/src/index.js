@@ -16,10 +16,18 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/index', (request, response) => {
+    const users = [
+        { id: 1, name: "bob",  daysAgoOnline: 2 },
+        { id: 2, name: "john", daysAgoOnline: 5  },
+        { id: 3, name: "jake", daysAgoOnline: 12  },
+    ];
+
     response.render('index', {
+        users,
         subject: 'EJS template engine',
-        name: 'our template',
-        is_admin: true,
+        name: 'Anton',
+        is_admin: false,
+        total: 120,
         link: 'https://google.com'
     });
 });
@@ -29,15 +37,15 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
 
-import mongoose from "mongoose";
-
-mongoose.connect('mongodb://localhost:27030/pretest', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-});
-mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB');
-});
-mongoose.connection.on('error', (error) => {
-    console.log(error);
-});
+// import mongoose from "mongoose";
+//
+// mongoose.connect('mongodb://localhost:27030/pretest', {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// });
+// mongoose.connection.on('connected', () => {
+//     console.log('Connected to MongoDB');
+// });
+// mongoose.connection.on('error', (error) => {
+//     console.log(error);
+// });

@@ -1,3 +1,12 @@
+<%
+    let a = 12;
+    a = a * 4;
+
+    if (is_admin) {
+        name = name.toUpperCase();
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +20,35 @@
 <body>
 <div class="container mt-2">
     <header>
-        <h2>Welcome</h2>
-        <% if(is_admin){ %>
-            <h2>Admin panel</h2>
-        <% } %>
+        <h2>Welcome!!!</h2>
         <p>Here is the homepage for <%= name %></p>
+        <% if(is_admin){ %>
+            <div class="btn btn-info">Admin Panel</div>
+        <% } %>
+
+        <button type="button" class="btn btn-primary">
+            Cart
+            <% if(total > 0){ %>
+                <span class="badge badge-light">$<%= total %></span>
+            <% } %>
+
+            <span class="sr-only">Cart</span>
+        </button>
+
     </header>
     <section>
-        <h2>Here is the body</h2>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam,
-            repellendus!
-        </p>
+        <% for(let i=0; i < users.length; i++) { %>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"><%= users[i].name %></h5>
+                        <small><%= users[i].daysAgoOnline %> days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small><%= users[i].id %></small>
+                </a>
+            </div>
+        <% } %>
     </section>
     <footer>
         <h2>Here is the footer</h2>
