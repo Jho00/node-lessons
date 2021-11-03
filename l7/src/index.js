@@ -28,9 +28,21 @@ app.get('/index', (request, response) => {
         name: 'Anton',
         is_admin: false,
         total: 120,
-        link: 'https://google.com'
+        link: 'https://google.com',
+        errorMessage: request.query.errorMessage
     });
 });
+
+app.get("/cart", (req, res) => {
+    const user = { cart_items: [] };
+
+    if (user.cart_items.length < 1) {
+        res.redirect('/index?errorMessage=Your%20cart%20is%20empty');
+        return;
+    }
+
+    res.render("cart", {});
+})
 
 
 app.listen(port, () => {

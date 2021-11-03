@@ -1,12 +1,3 @@
-<%
-    let a = 12;
-    a = a * 4;
-
-    if (is_admin) {
-        name = name.toUpperCase();
-    }
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,21 +13,28 @@
     <header>
         <h2>Welcome!!!</h2>
         <p>Here is the homepage for <%= name %></p>
-        <% if(is_admin){ %>
+        <% if (is_admin) { %>
             <div class="btn btn-info">Admin Panel</div>
         <% } %>
 
-        <button type="button" class="btn btn-primary">
-            Cart
-            <% if(total > 0){ %>
-                <span class="badge badge-light">$<%= total %></span>
-            <% } %>
+        <a href="/cart">
+            <button type="button" class="btn btn-primary">
+                Cart
+                <% if(total > 0){ %>
+                    <span class="badge badge-light">$<%= total %></span>
+                <% } %>
 
-            <span class="sr-only">Cart</span>
-        </button>
-
+                <span class="sr-only">Cart</span>
+            </button>
+        </a>
     </header>
     <section>
+        <% if (errorMessage && errorMessage.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+        <br>
         <% for(let i=0; i < users.length; i++) { %>
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
