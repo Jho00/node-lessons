@@ -9,10 +9,10 @@
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
-    <title>Login</title>
+    <title>Create profile</title>
 </head>
 <body>
-<form action="/login" method="post" style="padding: 20px">
+<form action="/registration" method="post" style="padding: 20px">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -21,8 +21,8 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" required name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-    <small>Or <a href="/registration">create profile</a></small>
+    <button type="submit" class="btn btn-success">Create profile</button>
+    <small>Or <a href="/login">login</a></small>
 </form>
 </body>
 </html>
